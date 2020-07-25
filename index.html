@@ -99,7 +99,7 @@
         </div>
 
 
-        <div id='box' style= "float:inline-start; margin-top: 310px; left: 70px;">
+        <div id='box' style= "float: left;  margin-left:100px; margin-top: 30px;">
             <h2>내가 좋아하는 음악</h2>
             <div>
                 <h3>
@@ -111,11 +111,22 @@
 
         </div>
 
-        <div id='box' style= "float:inline-start; margin-top: 30px; left: 70px; height: 270px;">
+        <div id='box' style= "float: left; height: 270px; margin-left:100px; margin-top: 30px;">
             <h2>javascript 연습 1</h2>
             <div>
                 <h3>2020-7-25</h3>
                 <canvas id="myCanvas" width="289" height="160"></canvas>
+            </div>
+
+        </div>
+
+        <div id='box' style= "float: left;  margin-left:100px; margin-top: 30px;">
+            <h2>javascript 연습 2</h2>
+            <div>
+                <h3>2020-7-25 오후</h3>
+                <h3>반짝반짝 효과</h3>
+                <h3><a href="https://twinkle123.netlify.app/"> 하러가기</a></h3>
+                
             </div>
 
         </div>
@@ -170,7 +181,7 @@
             function draw() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                if(Math.floor( Math.random() * 10 ) < 2){
+                if(Math.random() < 0.2){
                     newStar();
                 }
                 drawStar();
