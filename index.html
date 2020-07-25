@@ -43,6 +43,7 @@
             p{
                 line-height: 0.7;
             }
+            canvas { background: rgb(15, 5, 34); display: block; margin: 0 auto; }
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173494824-1"></script>
@@ -53,6 +54,8 @@
 
             gtag('config', 'UA-173494824-1');
         </script>
+
+        
 
     </head>
     <body>
@@ -108,7 +111,75 @@
 
         </div>
 
+        <div id='box' style= "float:inline-start; margin-top: 30px; left: 70px; height: 270px;">
+            <h2>javascript 연습 1</h2>
+            <div>
+                <h3>2020-7-25</h3>
+                <canvas id="myCanvas" width="289" height="160"></canvas>
+            </div>
 
+        </div>
+
+
+        <script>
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var x = canvas.width/2;
+            var y = canvas.height-30;
+            var dx = 2;
+            var dy = -2;
+
+            var ballRadius = 10;
+
+            var paddleHeight = 10;
+            var paddleWidth = 75;
+            var paddleX = (canvas.width-paddleWidth)/2;
+
+            var StarList = new Array();
+
+            function pos(x, y){
+                nx = x * canvas.width - y * 0.6;
+                ny = y;
+                return [nx, ny]
+            }
+
+            function drawStar(){
+                for(var i = 0; i < StarList.length; i++){
+                    ctx.beginPath();
+                    
+                    list = Array();
+                    list.push(pos(StarList[i][0], StarList[i][1]))    
+                    list.push(pos(StarList[i][0], StarList[i][1] + 25))
+
+                    ctx.moveTo(list[0][0], list[0][1]);
+                    ctx.lineTo(list[1][0], list[1][1]);
+
+                    ctx.strokeStyle = "#f2f59a";
+
+                    ctx.stroke();
+                    
+                    StarList[i][1] += 8
+                    
+                }
+            }
+
+            function newStar(){
+                StarList.push([Math.random(), 0])
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                if(Math.floor( Math.random() * 10 ) < 2){
+                    newStar();
+                }
+                drawStar();
+            }
+
+            setInterval(draw, 10);
+        </script>
+
+        
 
     </body>
 </html>
